@@ -1,9 +1,7 @@
 {
-  "description": "Changes background on pages matching mozilla.org",
   "manifest_version": 2,
-  "name": "LearningFirefoxExtension",
+  "name": "URLVoid Firefox Extension",
   "version": "1.0.0",
-  "homepage_url": "https://github.com/hchiam/learning-firefox-extension",
   "icons": {
     "48": "example-icon.png"
   },
@@ -13,6 +11,9 @@
       "js": ["brain.js"]
     }
   ],
+  "browser_action": {
+    "default_popup": "popup.html"
+  },
   "permissions": [
     "storage",
     "<all_urls>"
