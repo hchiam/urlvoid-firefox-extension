@@ -6,7 +6,7 @@ for (let i in children) {
   const src = children[i].attributes['src'];
   const host = (src && src.value) ? src.value.split('/')[2] : undefined;
   if (host !== undefined) {
-    console.log(host);
+    // console.log(host);
     hosts.push(host);
     addToStorage('hosts', hosts);
   }
@@ -20,7 +20,7 @@ function onError(error) {
 
 function addToStorage(key, data) {
   browser.storage.local.set({ [key] :  data }).then(() => {
-    console.log('addToStorage', key, data);
+    // console.log('addToStorage', key, data);
   }, onError);
 }
 

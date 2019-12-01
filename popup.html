@@ -9,18 +9,26 @@
         color: snow;
         border: none;
         border-radius: 10px;
-        padding: 10px;
       }
       body {
-        width: 100px;
+        width: auto;
+        padding: 10px;
       }
       button {
         background: #555;
+        padding: 10px;
+      }
+      #message {
+        display: none;
+        background: lime;
+        color: black;
+        padding: 10px;
       }
     </style>
   </head>
-<body>
-  <button id="check" onclick="openInNewTab('google.com')">Check scripts</button>    
-  <script src="popup.js"></script>
-</body>
+  <body>
+    <p id="message"></p>
+    <button id="check" onclick="openInNewTab('google.com')">Check scripts</button>    
+    <script src="popup.js"></script>
+  </body>
 </html>
