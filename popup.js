@@ -9,7 +9,6 @@ document.getElementById('check').addEventListener('click', () => {
     hosts = results.hosts;
     alert(JSON.stringify(hosts))
     for (const host of hosts) {
-      alert(host)
       openInNewTab(host)
     }
   }, onError);
@@ -17,17 +16,7 @@ document.getElementById('check').addEventListener('click', () => {
 
 function openInNewTab(host) {
   const urlToOpen = 'https://www.urlvoid.com/scan/' + host
-  alert('Trying to open tab to: ' + urlToOpen);
-  // const win = window.open(urlToOpen, '_blank');
-  // win.focus();
-  browser.browserAction.onClicked.addListener(function() {
-    var creating = browser.tabs.create({
-      url: urlToOpen
-    });
-    creating.then(onCreated, onError);
+  var creating = browser.tabs.create({
+    url: urlToOpen
   });
-}
-
-function onCreated() {
-  alert('done')
 }
