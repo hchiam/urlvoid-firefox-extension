@@ -1,6 +1,7 @@
 {
   "manifest_version": 2,
   "name": "URLVoid Firefox Extension",
+  "description" : "Check all scripts. With 2 clicks. (Disclaimer: This is not an official URLVoid tool. Just an experimental tool that creates and opens links.)",
   "version": "1.0.0",
   "icons": {
     "48": "example-icon.png"
