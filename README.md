@@ -1,15 +1,9 @@
-# Learning Firefox extension
+# URLVoid Firefox Add-on/Extension
 
-Just one of the things I'm learning. <https://github.com/hchiam/learning>
+Check all scripts. With 3 clicks.
 
-Tutorial: <https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension>
+Disclaimer: This is *not* an official URLVoid tool. Just an experimental tool that creates and opens links. Recommended to be used in combination with the add-on [NoScript](https://addons.mozilla.org/en-US/firefox/addon/noscript/).
 
-An example forked from MDN repo: <https://github.com/hchiam/webextensions-examples/tree/master/borderify>
+## Want to create your own Firefox add-on?
 
-Some steps:
-
-1. Open <about:debugging> in Firefox.
-1. Click "This Firefox" if that option exists.
-1. "Temporary Extensions": "Load Temporary Add-on..."
-1. Select the `.json` file.
-1. (If you're running Firefox in incognito, go to <about:addons> -> "Manage" -> "Run in Private Windows": "Allow")
+Used this template repo as a starting point: <https://github.com/hchiam/learning-firefox-extension>
