@@ -9,6 +9,7 @@
         color: snow;
         border: none;
         border-radius: 10px;
+        transition: 0.5s;
       }
       body {
         width: auto;
@@ -18,11 +19,24 @@
         background: #555;
         padding: 10px;
       }
+      button:hover {
+        background: lime;
+        color: black;
+      }
       #message {
         display: none;
         background: lime;
         color: black;
         padding: 10px;
+        animation: changing-colour 1s infinite alternate;
+      }
+      @keyframes changing-colour {
+        from {
+          background: lime;
+        }
+        to {
+          background: lightcyan;
+        }
       }
     </style>
   </head>
