@@ -1,4 +1,4 @@
-# URLVoid Firefox Add-on/Extension
+# URLVoid Firefox Add-on/Extension: Check All Scripts with URLVoid
 
 Check all scripts. With 3 clicks.
 
