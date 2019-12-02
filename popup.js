@@ -5,7 +5,7 @@ function onError(error) {
 }
 
 function suggestManualForFirst() {
-  alert("Try copying the current page's URL and running a scan here: https://www.urlvoid.com");
+  alert("Automatically opening new tabs might be blocked.\n\nTry copying the current page's URL and running a scan here: https://www.urlvoid.com");
 }
 
 document.getElementById('check').addEventListener('click', () => {
