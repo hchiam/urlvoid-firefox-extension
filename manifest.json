@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "homepage_url": "https://github.com/hchiam/urlvoid-firefox-extension",
   "icons": {
-    "48": "example-icon.png"
+    "48": "icon.png"
   },
   "content_scripts": [
     {
