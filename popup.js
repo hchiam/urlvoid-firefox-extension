@@ -4,6 +4,10 @@ function onError(error) {
   console.log(error);
 }
 
+function suggestManualForFirst() {
+  alert("Try copying the current page's URL and running a scan here: https://www.urlvoid.com");
+}
+
 document.getElementById('check').addEventListener('click', () => {
   const yes = confirm('Do you want to continue?\n\n 1) Page will refresh,\n 2) will wait 3 seconds, and then\n 3) will open several pages.');
   if (!yes) return;
@@ -13,8 +17,12 @@ document.getElementById('check').addEventListener('click', () => {
       browser.storage.local.get('hosts').then((results) => {
         hosts = results.hosts;
         // alert(JSON.stringify(hosts))
-        for (const host of hosts) {
-          openInNewTab(host)
+        if (hosts === undefined) {
+          suggestManualForFirst();
+        } else {
+          for (const host of hosts) {
+            openInNewTab(host)
+          }
         }
         window.close();
       }, onError);
