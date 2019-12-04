@@ -1,5 +1,7 @@
 # URLVoid Firefox Add-on: Check All Scripts with URLVoid
 
+[![add-on icon](https://raw.githubusercontent.com/hchiam/urlvoid-firefox-extension/master/icon.png)](https://addons.mozilla.org/en-US/firefox/addon/check-all-scripts-with-urlvoid)
+
 <https://addons.mozilla.org/en-US/firefox/addon/check-all-scripts-with-urlvoid>
 
 Check all scripts. With 3 clicks.
