@@ -8,19 +8,18 @@ function getHosts() {
   if (tabHost.startsWith('www')) {
     hosts.add(tabHost.replace(/^www\./g, ''));
   }
-  const children = document.head.children;
-  for (let i in children) {
-    const src = children[i].attributes['src'];
-    const host = (src && src.value) ? src.value.split('/')[2] : '';
+  const scripts = document.scripts;
+  for (let i in scripts) {
+    const src = scripts[i].src;
+    if (!src) continue;
+    const host = src.split('/')[2];
     const hostMinusWWW = (host.startsWith('www.')) ? host.replace(/^www\./g, '') : '';
-    if (host !== '' && host.includes('.') && !hosts.has(host)) {
+    if (host && host.includes('.') && !hosts.has(host)) {
       hosts.add(host);
       if (hostMinusWWW !== '') hosts.add(hostMinusWWW);
-      // console.log(hosts);
-      addToStorage('hosts', Array.from(hosts));
     }
   }
-  // addToStorage('hosts', hosts);
+  addToStorage('hosts', Array.from(hosts));
 }
 
 function onError(error) {
@@ -29,7 +28,15 @@ function onError(error) {
 
 function addToStorage(key, data) {
   browser.storage.local.set({ [key] :  data }).then(() => {
-    // console.log('addToStorage', key, data);
+    console.log('addToStorage', key, data);
+  }, onError);
+}
+
+function updateStorage(key, data) {
+  browser.storage.local.get(key).then((result) => {
+    browser.storage.local.remove(key);
+    addToStorage(key, data);
+    console.log('updateStorage', key, data);
   }, onError);
 }
 
