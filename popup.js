@@ -1,5 +1,3 @@
-let hosts = [];
-
 function onError(error) {
   console.log(error);
 }
@@ -16,7 +14,7 @@ document.getElementById('check').addEventListener('click', () => {
   browser.tabs.reload().then(() => {
     setTimeout(() => {
       browser.storage.local.get('hosts').then((results) => {
-        hosts = results.hosts;
+        const hosts = results.hosts;
         // alert(JSON.stringify(results));
         if (hosts === undefined) {
           suggestManualForFirst();
