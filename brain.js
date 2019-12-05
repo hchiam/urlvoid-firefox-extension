@@ -3,7 +3,11 @@ getHosts();
 
 function getHosts() {
   const hosts = new Set();
-  hosts.add(String(window.location).split('/')[2]);
+  const tabHost = String(window.location).split('/')[2];
+  hosts.add(tabHost);
+  if (tabHost.startsWith('www')) {
+    hosts.add(tabHost.replace(/^www\./g, ''));
+  }
   const children = document.head.children;
   for (let i in children) {
     const src = children[i].attributes['src'];
