@@ -28,7 +28,7 @@ function onError(error) {
 
 function addToStorage(key, data) {
   browser.storage.local.set({ [key] :  data }).then(() => {
-    console.log('addToStorage', key, data);
+    // console.log('addToStorage', key, data);
   }, onError);
 }
 
@@ -36,7 +36,7 @@ function updateStorage(key, data) {
   browser.storage.local.get(key).then((result) => {
     browser.storage.local.remove(key);
     addToStorage(key, data);
-    console.log('updateStorage', key, data);
+    // console.log('updateStorage', key, data);
   }, onError);
 }
 
