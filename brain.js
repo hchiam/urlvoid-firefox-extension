@@ -1,5 +1,4 @@
 clearStorage();
-getHosts();
 
 function getHosts() {
   const hosts = new Set();
@@ -42,4 +41,34 @@ function updateStorage(key, data) {
 
 function clearStorage() {
   browser.storage.local.clear();
+}
+
+// to get messages from popup.js, use this instead of browser.storage.local.get:
+browser.runtime.onMessage.addListener((results) => {
+  const openNewTabs = results.openNewTabs;
+  if (openNewTabs !== true) return; // just in case
+
+  getHosts(); // get hosts now since page has already reloaded after message received
+
+  browser.storage.local.get('hosts').then((results) => {
+    const hosts = results.hosts;
+    if (hosts === undefined) {
+      suggestManualForFirst();
+    } else {
+      for (const host of hosts) {
+        openInNewTab(host);
+      }
+    }
+  }, onError);
+
+}); // browser.runtime.onMessage.addListener does not accept onError parameter
+
+function suggestManualForFirst() {
+  alert("Something went wrong.\n\nTry copying the current page's URL and running a scan here: https://www.urlvoid.com");
+  openInNewTab();
+}
+
+function openInNewTab(host) {
+  const urlToOpen = 'https://www.urlvoid.com/scan/' + host;
+  window.open(urlToOpen, '_blank');
 }
