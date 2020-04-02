@@ -47,28 +47,6 @@ function clearStorage() {
 browser.runtime.onMessage.addListener((results) => {
   const openNewTabs = results.openNewTabs;
   if (openNewTabs !== true) return; // just in case
-
   getHosts(); // get hosts now since page has already reloaded after message received
-
-  browser.storage.local.get('hosts').then((results) => {
-    const hosts = results.hosts;
-    if (hosts === undefined) {
-      suggestManualForFirst();
-    } else {
-      for (const host of hosts) {
-        openInNewTab(host);
-      }
-    }
-  }, onError);
-
+  // (let popup.js open tabs to the hosts)
 }); // browser.runtime.onMessage.addListener does not accept onError parameter
-
-function suggestManualForFirst() {
-  alert("Something went wrong.\n\nTry copying the current page's URL and running a scan here: https://www.urlvoid.com");
-  openInNewTab();
-}
-
-function openInNewTab(host) {
-  const urlToOpen = 'https://www.urlvoid.com/scan/' + host;
-  window.open(urlToOpen, '_blank');
-}

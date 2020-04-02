@@ -32,5 +32,32 @@ function sendMessageToTabs(tabs) {
       }
     ).catch(onError);
   }
-  window.close();
+  // (by now, brain.js has collected all the hosts)
+  openHostsInTabs();
+}
+
+function openHostsInTabs() {
+  browser.storage.local.get('hosts').then((results) => {
+    const hosts = results.hosts;
+    if (hosts === undefined) {
+      suggestManualForFirst();
+    } else {
+      for (const host of hosts) {
+        openInNewTab(host);
+      }
+    }
+    window.close();
+  }, onError);
+}
+
+function suggestManualForFirst() {
+  alert("Something went wrong.\n\nTry copying the current page's URL and running a scan here: https://www.urlvoid.com");
+  openInNewTab();
+}
+
+function openInNewTab(host) {
+  const urlToOpen = 'https://www.urlvoid.com/scan/' + host;
+  browser.tabs.create({
+    url: urlToOpen
+  });
 }
