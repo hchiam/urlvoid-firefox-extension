@@ -56,7 +56,7 @@ function suggestManualForFirst() {
 }
 
 function openInNewTab(host) {
-  const urlToOpen = 'https://www.urlvoid.com/scan/' + host;
+  const urlToOpen = 'https://www.urlvoid.com/scan/' + (host ? host : '');
   browser.tabs.create({
     url: urlToOpen
   });

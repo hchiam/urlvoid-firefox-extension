@@ -1,24 +1,54 @@
 clearStorage();
 
 function getHosts() {
-  const hosts = new Set();
-  const tabHost = String(window.location).split('/')[2];
+  const hosts = new Set(); // use Set to keep unique values
+  getHostFromCurrentTab(hosts)
+  const children = document.head.children;
+  addSrcAndHrefToHosts(children, hosts);
+  const scripts = document.scripts;
+  addSrcAndHrefToHosts(scripts, hosts);
+  addToStorage('hosts', Array.from(hosts));
+  // console.log(hosts);
+}
+
+function getHostFromCurrentTab(hosts) {
+  const tabHost = String(window.location).split('/')[2].replace(/\/$/,'');
   hosts.add(tabHost);
   if (tabHost.startsWith('www')) {
     hosts.add(tabHost.replace(/^www\./g, ''));
   }
-  const scripts = document.scripts;
-  for (let i in scripts) {
-    const src = scripts[i].src;
-    if (!src) continue;
-    const host = src.split('/')[2];
-    const hostMinusWWW = (host.startsWith('www.')) ? host.replace(/^www\./g, '') : '';
-    if (host && host.includes('.') && !hosts.has(host)) {
-      hosts.add(host);
-      if (hostMinusWWW !== '') hosts.add(hostMinusWWW);
-    }
+}
+
+function addSrcAndHrefToHosts(elements, hosts) {
+  for (let i in elements) {
+    const src = elements[i].src;
+    addHostToHosts(src, hosts);
+    const href = elements[i].href;
+    addHostToHosts(href, hosts);
   }
-  addToStorage('hosts', Array.from(hosts));
+}
+
+function addHostToHosts(host, hosts) {
+  const noHost = (!host || host == undefined);
+  if (noHost) return;
+
+  // keep part between "//" and 1st "/", and remove the final "/":
+  host = host.split('/')[2].replace(/\/$/,'');
+
+  const invalidHost = !host || !host.includes('.');
+  const repeatHost = hosts.has(host);
+  if (invalidHost || repeatHost) return;
+  hosts.add(host);
+
+  const hostMinusWWW = (host.startsWith('www.')) ? host.replace(/^www\./g, '') : '';
+  if (hostMinusWWW !== '') {
+    hosts.add(hostMinusWWW);
+  }
+
+  const hostPartDotPart = host.match(/\.([^.]+\..+)$/);
+  if (hostPartDotPart !== null) {
+    hosts.add(hostPartDotPart[1]);
+  }
 }
 
 function onError(error) {
