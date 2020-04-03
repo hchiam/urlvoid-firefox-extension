@@ -1,4 +1,4 @@
-# URLVoid Firefox Add-on: Check All Scripts with URLVoid
+# Check All Scripts with URLVoid (a Firefox Add-on)
 
 ![version](https://img.shields.io/github/release/hchiam/urlvoid-firefox-extension)
 
