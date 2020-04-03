@@ -12,11 +12,8 @@ function getHosts() {
 }
 
 function getHostFromCurrentTab(hosts) {
-  const tabHost = String(window.location).split('/')[2].replace(/\/$/,'');
-  hosts.add(tabHost);
-  if (tabHost.startsWith('www')) {
-    hosts.add(tabHost.replace(/^www\./g, ''));
-  }
+  const tabHost = String(window.location);
+  addHostToHosts(tabHost, hosts);
 }
 
 function addSrcAndHrefToHosts(elements, hosts) {
