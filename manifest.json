@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "name": "Check All Scripts with URLVoid",
-  "description" : "Check all scripts. With 3 clicks. (Disclaimer: This is not an official URLVoid tool. Just an experimental tool that creates and opens links. Recommended to be used in combination with the add-on NoScript.)",
-  "version": "1.1.1",
+  "description": "Check all scripts. With 3 clicks. (Disclaimer: This is not an official URLVoid tool. Just an experimental tool that creates and opens links. Recommended to be used in combination with the add-on NoScript.)",
+  "version": "1.2.0",
   "homepage_url": "https://github.com/hchiam/urlvoid-firefox-extension",
   "icons": {
     "48": "icon.png"
@@ -16,9 +16,5 @@
   "browser_action": {
     "default_popup": "popup.html"
   },
-  "permissions": [
-    "storage",
-    "activeTab",
-    "tabs"
-  ]
+  "permissions": ["storage", "activeTab", "tabs"]
 }
