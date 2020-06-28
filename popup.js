@@ -19,7 +19,7 @@ document.getElementById("check").addEventListener("click", () => {
 
 document.getElementById(
   "version-number"
-).innerHTML = chrome.runtime.getManifest().version;
+).firstChild.nodeValue = chrome.runtime.getManifest().version;
 
 function waitingStyle() {
   document.getElementById("check").style.display = "none";
