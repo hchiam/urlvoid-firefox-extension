@@ -5,7 +5,8 @@
   "version": "1.2.3",
   "homepage_url": "https://github.com/hchiam/urlvoid-firefox-extension",
   "icons": {
-    "48": "icon.png"
+    "48": "icon.png",
+    "128": "icon128.png"
   },
   "content_scripts": [
     {
@@ -16,7 +17,8 @@
   "browser_action": {
     "default_popup": "popup.html",
     "default_icon": {
-      "128": "icon.png"
+      "48": "icon.png",
+      "128": "icon128.png"
     }
   },
   "permissions": ["storage", "activeTab", "tabs"]
