@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Check All Scripts with URLVoid",
   "description": "Check all scripts. With 3 clicks. (Disclaimer: Not an official URLVoid tool. Experimental. Recommended to be used with NoScript.)",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "homepage_url": "https://github.com/hchiam/urlvoid-firefox-extension",
   "icons": {
     "48": "icon.png"
