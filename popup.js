@@ -59,9 +59,7 @@ function openHostsInTabs() {
     if (hosts === undefined) {
       suggestManualForFirst();
     } else {
-      for (const host of hosts) {
-        openInNewTab(host);
-      }
+      askBeforeOpeningLotsOfTabs(hosts);
     }
     window.close();
   });
@@ -72,6 +70,19 @@ function suggestManualForFirst() {
     "Something went wrong.\n\nTry copying the current page's URL and running a scan here: https://www.urlvoid.com"
   );
   openInNewTab();
+}
+
+function askBeforeOpeningLotsOfTabs(hosts) {
+  const lots = 10;
+  if (hosts.length >= lots) {
+    const yes = confirm(
+      `Please confirm that you're fine with opening ${hosts.length} tabs to URLVoid. If you cancel, nothing will happen.`
+    );
+    if (!yes) return;
+  }
+  for (const host of hosts) {
+    openInNewTab(host);
+  }
 }
 
 function openInNewTab(host) {
