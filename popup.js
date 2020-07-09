@@ -3,6 +3,10 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
   const url = new URL(tab.url);
   const domain = url.hostname.replace(/^www\./, ""); // example: wikipedia.org
   const checkDomainButton = document.getElementById("check-1");
+  if (domain === "") {
+    checkDomainButton.remove();
+    return;
+  }
   checkDomainButton.textContent = "Check just " + domain;
   checkDomainButton.addEventListener("click", () => {
     openInNewTab(domain);
