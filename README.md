@@ -1,4 +1,4 @@
-# Check All Scripts with URLVoid (now also a Chrome Extension too!)
+# Check All Scripts with URLVoid
 
 ![version](https://img.shields.io/github/release/hchiam/urlvoid-firefox-extension) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/hchiam/urlvoid-firefox-extension/blob/master/LICENSE) [![HitCount](http://hits.dwyl.com/hchiam/urlvoid-firefox-extension.svg)](http://hits.dwyl.com/hchiam/urlvoid-firefox-extension)
 
