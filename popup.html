@@ -21,6 +21,7 @@
       button {
         background: #555;
         padding: 10px;
+        margin-bottom: 1rem;
       }
       button:hover {
         background: lime;
@@ -32,9 +33,6 @@
         color: black;
         padding: 10px;
         animation: changing-colour 1s infinite alternate;
-      }
-      #version-number-container {
-        padding-top: 0.5rem;
       }
       #version-number-container,
       #version-number {
@@ -52,6 +50,7 @@
   </head>
   <body>
     <p id="message"></p>
+    <button id="check-1">Check domain <span id="domain"></span></button>
     <button id="check">Check scripts</button>
     <div id="version-number-container" role="button">
       You're using version

@@ -1,3 +1,15 @@
+chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+  const tab = tabs[0];
+  const url = new URL(tab.url);
+  const domain = url.hostname.replace(/^www\./, ""); // example: wikipedia.org
+  const checkDomainButton = document.getElementById("check-1");
+  checkDomainButton.textContent = "Check just " + domain;
+  checkDomainButton.addEventListener("click", () => {
+    openInNewTab(domain);
+    window.close();
+  });
+});
+
 document.getElementById("check").addEventListener("click", () => {
   const yes = confirm("Need to refresh this page.\n\nDo you want to continue?");
   if (!yes) return;
