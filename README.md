@@ -1,6 +1,6 @@
 # Check All Scripts with URLVoid (a Firefox Add-on, and now a Chrome Extension too!)
 
-![version](https://img.shields.io/github/release/hchiam/urlvoid-firefox-extension) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![HitCount](http://hits.dwyl.com/hchiam/urlvoid-firefox-extension.svg)](http://hits.dwyl.com/hchiam/urlvoid-firefox-extension)
+![version](https://img.shields.io/github/release/hchiam/urlvoid-firefox-extension) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/hchiam/urlvoid-firefox-extension/blob/master/LICENSE) [![HitCount](http://hits.dwyl.com/hchiam/urlvoid-firefox-extension.svg)](http://hits.dwyl.com/hchiam/urlvoid-firefox-extension)
 
 [![add-on icon](https://raw.githubusercontent.com/hchiam/urlvoid-firefox-extension/master/icon.png)](https://addons.mozilla.org/en-US/firefox/addon/check-all-scripts-with-urlvoid)
 
