@@ -34,6 +34,7 @@ document.getElementById(
 ).firstChild.nodeValue = chrome.runtime.getManifest().version;
 
 function waitingStyle() {
+  document.getElementById("check-1").style.display = "none";
   document.getElementById("check").style.display = "none";
   document.getElementById("message").style.display = "block";
   document.getElementById("message").textContent = "Just a sec...";
