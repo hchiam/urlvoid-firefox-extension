@@ -1,8 +1,6 @@
-# Check All Scripts with URLVoid
+# [![add-on icon](https://raw.githubusercontent.com/hchiam/urlvoid-firefox-extension/master/icon.png)](https://addons.mozilla.org/en-US/firefox/addon/check-all-scripts-with-urlvoid) Check All Scripts with URLVoid
 
-![version](https://img.shields.io/github/release/hchiam/urlvoid-firefox-extension) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/hchiam/urlvoid-firefox-extension/blob/master/LICENSE) [![HitCount](http://hits.dwyl.com/hchiam/urlvoid-firefox-extension.svg)](http://hits.dwyl.com/hchiam/urlvoid-firefox-extension)
-
-[![add-on icon](https://raw.githubusercontent.com/hchiam/urlvoid-firefox-extension/master/icon.png)](https://addons.mozilla.org/en-US/firefox/addon/check-all-scripts-with-urlvoid)
+[![version](https://img.shields.io/github/release/hchiam/urlvoid-firefox-extension?style=flat-square)](https://github.com/hchiam/urlvoid-firefox-extension/releases) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://github.com/hchiam/urlvoid-firefox-extension/blob/master/LICENSE) [![HitCount](http://hits.dwyl.com/hchiam/urlvoid-firefox-extension.svg)](http://hits.dwyl.com/hchiam/urlvoid-firefox-extension)
 
 Check all scripts. With 3 clicks.
 
