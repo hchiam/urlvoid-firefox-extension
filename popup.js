@@ -89,7 +89,7 @@ function askBeforeOpeningLotsOfTabs(hosts) {
 
   if (haveLots && !haveCheckboxes) {
     canContinue = confirm(
-      `Please confirm that you're fine with opening ${hosts.length} tabs to URLVoid. If you cancel, nothing will happen.`
+      `Please confirm that you're fine with opening ${hosts.length} tabs to URLVoid. \n\nIf you cancel, you can choose which ones to check.`
     );
   }
   if (canContinue) {
