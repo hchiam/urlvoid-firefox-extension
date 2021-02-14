@@ -23,7 +23,7 @@
         padding: 10px;
         margin-bottom: 1rem;
       }
-      button:hover {
+      button:not(:disabled):hover {
         background: lime;
         color: black;
       }
@@ -33,6 +33,15 @@
         color: black;
         padding: 10px;
         animation: changing-colour 1s infinite alternate;
+      }
+      #checkbox-container label {
+        display: block;
+      }
+      #checkbox-container label:hover {
+        color: lime;
+      }
+      #check-selected-hosts {
+        margin-top: 10px;
       }
       #version-number-container,
       #version-number {
@@ -52,6 +61,7 @@
     <p id="message"></p>
     <button id="check-1">Check domain <span id="domain"></span></button>
     <button id="check">Check scripts</button>
+    <div id="checkbox-container"></div>
     <div id="version-number-container" role="button">
       You're using version
       <a
