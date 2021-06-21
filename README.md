@@ -12,8 +12,8 @@ Check all scripts. With 3 clicks.
 
 ## Want to create your own Firefox add-on?
 
-Used this template repo as a starting point: <https://github.com/hchiam/learning-firefox-extension>
+Use this template repo as a starting point: <https://github.com/hchiam/learning-firefox-extension>
 
 ## Want to create your own Chrome extension?
 
-Used this template repo as a starting point: <https://github.com/hchiam/chrome-extension-template>
+Use this template repo as a starting point: <https://github.com/hchiam/chrome-extension-template>
