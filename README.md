@@ -1,6 +1,6 @@
 # [<img src="icon128.png" height="25px">](https://addons.mozilla.org/en-US/firefox/addon/check-all-scripts-with-urlvoid) Check All Scripts with URLVoid
 
-[![version](https://img.shields.io/github/release/hchiam/urlvoid-firefox-extension?style=flat-square)](https://github.com/hchiam/urlvoid-firefox-extension/releases) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://github.com/hchiam/urlvoid-firefox-extension/blob/master/LICENSE) [![HitCount](http://hits.dwyl.com/hchiam/urlvoid-firefox-extension.svg)](http://hits.dwyl.com/hchiam/urlvoid-firefox-extension)
+[![version](https://img.shields.io/github/release/hchiam/urlvoid-firefox-extension?style=flat-square)](https://github.com/hchiam/urlvoid-firefox-extension/releases) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://github.com/hchiam/urlvoid-firefox-extension/blob/master/LICENSE)
 
 Check all scripts. With 3 clicks.
 
