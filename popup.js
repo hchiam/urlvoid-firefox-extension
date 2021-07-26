@@ -37,9 +37,8 @@ d.$("#check").addEventListener("click", () => {
   });
 });
 
-d.$(
-  "#version-number"
-).firstChild.nodeValue = chrome.runtime.getManifest().version;
+d.$("#version-number").firstChild.nodeValue =
+  chrome.runtime.getManifest().version;
 
 function waitingStyle() {
   d.$("#check-1").style.display = "none";

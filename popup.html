@@ -15,8 +15,15 @@
       body {
         min-width: 150px;
         width: auto;
+        min-height: 200px;
         padding: 10px;
+        overflow: hidden;
         text-align: center;
+        display: grid;
+        place-items: center;
+        animation-name: grow-body;
+        animation-duration: 0.3s;
+        animation-fill-mode: forwards;
       }
       button {
         background: #555;
@@ -55,23 +62,33 @@
           background: lightcyan;
         }
       }
+      @keyframes grow-body {
+        from {
+          min-height: 0;
+        }
+        to {
+          min-height: 200px;
+        }
+      }
     </style>
   </head>
   <body>
-    <p id="message"></p>
-    <button id="check-1">Check domain <span id="domain"></span></button>
-    <button id="check">Check scripts</button>
-    <div id="checkbox-container"></div>
-    <div id="version-number-container" role="button">
-      You're using version
-      <a
-        id="version-number"
-        href="https://github.com/hchiam/urlvoid-firefox-extension/releases"
-        target="_blank"
-        title="See release notes"
-        >?</a
-      >
-    </div>
+    <main>
+      <p id="message"></p>
+      <button id="check-1">Check domain <span id="domain"></span></button>
+      <button id="check">Check scripts</button>
+      <div id="checkbox-container"></div>
+      <div id="version-number-container" role="button">
+        You're using version
+        <a
+          id="version-number"
+          href="https://github.com/hchiam/urlvoid-firefox-extension/releases"
+          target="_blank"
+          title="See release notes"
+          >?</a
+        >
+      </div>
+    </main>
     <script src="popup.js"></script>
   </body>
 </html>
