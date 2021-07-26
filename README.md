@@ -12,7 +12,9 @@ Check all scripts. With 3 clicks.
 
 ## Development
 
-about:debugging#/runtime/this-firefox
+Firefox: <about:debugging#/runtime/this-firefox>
+
+Chrome: <chrome://extensions>
 
 ## Want to create your own Firefox add-on?
 
