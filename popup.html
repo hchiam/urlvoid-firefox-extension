@@ -3,6 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <style>
+      :root {
+        --minHeight: 200px;
+      }
       * {
         font-family: Avenir, Arial, Helvetica, sans-serif;
         background: #333;
@@ -13,9 +16,9 @@
         transition: 0.5s;
       }
       body {
-        min-width: 150px;
+        min-width: 300px;
         width: auto;
-        min-height: 200px;
+        min-height: var(--minHeight);
         padding: 10px;
         overflow: hidden;
         text-align: center;
@@ -54,6 +57,22 @@
       #version-number {
         font-size: xx-small;
       }
+      #custom-confirm {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        border-radius: 0;
+        box-sizing: border-box;
+        transition: height 0.3s, padding 0.3s;
+        overflow: hidden;
+        height: 0%;
+        padding: 0;
+      }
+      #custom-confirm,
+      #custom-confirm p {
+        background: #222;
+      }
       @keyframes changing-colour {
         from {
           background: lime;
@@ -67,7 +86,7 @@
           min-height: 0;
         }
         to {
-          min-height: 200px;
+          min-height: var(--minHeight);
         }
       }
     </style>
@@ -87,6 +106,11 @@
           title="See release notes"
           >?</a
         >
+      </div>
+      <div id="custom-confirm">
+        <p class="message"></p>
+        <button class="cancel">Cancel</button>
+        <button class="confirm">OK</button>
       </div>
     </main>
     <script src="popup.js"></script>

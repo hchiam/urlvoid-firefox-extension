@@ -19,22 +19,26 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
 });
 
 d.$("#check").addEventListener("click", () => {
-  const yes = confirm("Need to refresh this page.\n\nDo you want to continue?");
-  if (!yes) return;
-  waitingStyle();
-  // send message only after reload
-  chrome.tabs.executeScript({ code: "window.location.reload();" }, () => {
-    // for popup.js to send data to brain.js, message tabs instead of using browser.storage.local.set:
-    chrome.tabs.query(
-      {
-        currentWindow: true,
-        active: true,
-      },
-      (tabs) => {
-        sendMessageToTabs(tabs);
-      }
-    );
-  });
+  customConfirm(
+    "Need to refresh this page.\n\nDo you want to continue?",
+    (yes) => {
+      if (!yes) return;
+      waitingStyle();
+      // send message only after reload
+      chrome.tabs.executeScript({ code: "window.location.reload();" }, () => {
+        // for popup.js to send data to brain.js, message tabs instead of using browser.storage.local.set:
+        chrome.tabs.query(
+          {
+            currentWindow: true,
+            active: true,
+          },
+          (tabs) => {
+            sendMessageToTabs(tabs);
+          }
+        );
+      });
+    }
+  );
 });
 
 d.$("#version-number").firstChild.nodeValue =
@@ -84,19 +88,20 @@ function askBeforeOpeningLotsOfTabs(hosts) {
   const haveLots = hosts.length >= lots;
 
   const haveCheckboxes = d.$$("#checkbox-container input").length > 0;
-  let canContinue = true;
 
   if (haveLots && !haveCheckboxes) {
-    canContinue = confirm(
-      `Please confirm that you're fine with opening ${hosts.length} tabs to URLVoid. \n\nIf you cancel, you can choose which ones to check.`
+    customConfirm(
+      `Please confirm that you're fine with opening ${hosts.length} tabs to URLVoid. \n\nIf you cancel, you can choose which ones to check.`,
+      (canContinue) => {
+        if (canContinue) {
+          hideCheckboxes();
+          openAllHosts(hosts);
+          window.close();
+        } else {
+          showCheckboxes(hosts);
+        }
+      }
     );
-  }
-  if (canContinue) {
-    hideCheckboxes();
-    openAllHosts(hosts);
-    window.close();
-  } else {
-    showCheckboxes(hosts);
   }
 }
 
@@ -152,4 +157,33 @@ function getSelectedHosts() {
   const values = [];
   checkedHostElements.forEach((c) => values.push(c.value));
   return values;
+}
+
+function customConfirm(message, callback) {
+  const container = d.$("#custom-confirm");
+  const messageElement = container.querySelector(".message");
+  const cancelButton = container.querySelector(".cancel");
+  const okButton = container.querySelector(".confirm");
+  showCustomConfirm();
+  messageElement.innerText = message;
+  cancelButton.addEventListener("click", () => {
+    hideCustomConfirm();
+    callback(false);
+  });
+  okButton.addEventListener("click", () => {
+    hideCustomConfirm();
+    callback(true);
+  });
+}
+
+function showCustomConfirm() {
+  const container = d.$("#custom-confirm");
+  container.style.height = "100%";
+  container.style.padding = "1rem";
+}
+
+function hideCustomConfirm() {
+  const container = d.$("#custom-confirm");
+  container.style.height = 0;
+  container.style.padding = 0;
 }
