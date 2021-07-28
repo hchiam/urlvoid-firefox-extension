@@ -18,27 +18,26 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
   });
 });
 
-d.$("#check").addEventListener("click", () => {
-  customConfirm(
-    "Need to refresh this page.\n\nDo you want to continue?",
-    (yes) => {
-      if (!yes) return;
-      waitingStyle();
-      // send message only after reload
-      chrome.tabs.executeScript({ code: "window.location.reload();" }, () => {
-        // for popup.js to send data to brain.js, message tabs instead of using browser.storage.local.set:
-        chrome.tabs.query(
-          {
-            currentWindow: true,
-            active: true,
-          },
-          (tabs) => {
-            sendMessageToTabs(tabs);
-          }
-        );
-      });
-    }
+d.$("#check").addEventListener("click", async () => {
+  const yes = await customConfirm(
+    "Need to refresh this page.\n\nDo you want to continue?"
   );
+  if (!yes) return;
+
+  waitingStyle();
+  // send message only after reload
+  chrome.tabs.executeScript({ code: "window.location.reload();" }, () => {
+    // for popup.js to send data to brain.js, message tabs instead of using browser.storage.local.set:
+    chrome.tabs.query(
+      {
+        currentWindow: true,
+        active: true,
+      },
+      (tabs) => {
+        sendMessageToTabs(tabs);
+      }
+    );
+  });
 });
 
 d.$("#version-number").firstChild.nodeValue =
@@ -83,25 +82,22 @@ function suggestManualForFirst() {
   openInNewTab();
 }
 
-function askBeforeOpeningLotsOfTabs(hosts) {
+async function askBeforeOpeningLotsOfTabs(hosts) {
   const lots = 5;
   const haveLots = hosts.length >= lots;
-
   const haveCheckboxes = d.$$("#checkbox-container input").length > 0;
+  if (!haveLots || haveCheckboxes) return;
 
-  if (haveLots && !haveCheckboxes) {
-    customConfirm(
-      `Please confirm that you're fine with opening ${hosts.length} tabs to URLVoid. \n\nIf you cancel, you can choose which ones to check.`,
-      (canContinue) => {
-        if (canContinue) {
-          hideCheckboxes();
-          openAllHosts(hosts);
-          window.close();
-        } else {
-          showCheckboxes(hosts);
-        }
-      }
-    );
+  const canContinue = await customConfirm(
+    `Please confirm that you're fine with opening ${hosts.length} tabs to URLVoid. \n\nIf you cancel, you can choose which ones to check.`
+  );
+
+  if (canContinue) {
+    hideCheckboxes();
+    openAllHosts(hosts);
+    window.close();
+  } else {
+    showCheckboxes(hosts);
   }
 }
 
@@ -159,13 +155,19 @@ function getSelectedHosts() {
   return values;
 }
 
-function customConfirm(message, callback) {
+async function customConfirm(message) {
   const container = d.$("#custom-confirm");
   const messageElement = container.querySelector(".message");
   const cancelButton = container.querySelector(".cancel");
   const okButton = container.querySelector(".confirm");
   showCustomConfirm();
   messageElement.innerText = message;
+  let awaitingUserAction = true;
+  let userResponse = false;
+  function callback(ok) {
+    awaitingUserAction = false;
+    userResponse = ok;
+  }
   cancelButton.addEventListener("click", () => {
     hideCustomConfirm();
     callback(false);
@@ -174,6 +176,10 @@ function customConfirm(message, callback) {
     hideCustomConfirm();
     callback(true);
   });
+
+  while (awaitingUserAction) await delay(300);
+
+  return userResponse;
 }
 
 function showCustomConfirm() {
@@ -187,3 +193,5 @@ function hideCustomConfirm() {
   container.style.height = 0;
   container.style.padding = 0;
 }
+
+const delay = (ms) => new Promise((res) => setTimeout(res, ms));
