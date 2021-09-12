@@ -1,11 +1,13 @@
 clearStorage();
 
+getHosts();
+
 function getHosts() {
   const hosts = new Set(); // use Set to keep unique values
   getHostFromCurrentTab(hosts);
-  const children = document.head.children;
+  const children = Array.from(document.head.children);
   addSrcAndHrefToHosts(children, hosts);
-  const scripts = document.scripts;
+  const scripts = Array.from(document.scripts);
   addSrcAndHrefToHosts(scripts, hosts);
   addToStorage("hosts", Array.from(hosts));
   // console.log(hosts);
@@ -22,6 +24,8 @@ function addSrcAndHrefToHosts(elements, hosts) {
     addHostToHosts(src, hosts);
     const href = elements[i].href;
     addHostToHosts(href, hosts);
+    const baseURI = elements[i].baseURI;
+    addHostToHosts(baseURI, hosts);
   }
 }
 

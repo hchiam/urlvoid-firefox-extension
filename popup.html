@@ -13,29 +13,46 @@
         border: none;
         border-radius: 10px;
         font-size: medium;
-        transition: 0.5s;
+        transition: background 0.2s, color 0.2s;
       }
       body {
-        min-width: 300px;
+        min-width: 400px;
         width: auto;
         min-height: var(--minHeight);
+        height: 100%;
         padding: 10px;
         overflow: auto;
         text-align: center;
         display: grid;
         place-items: center;
         animation-name: grow-body;
-        animation-duration: 0.3s;
+        animation-duration: 0.2s;
         animation-fill-mode: forwards;
       }
       button {
         background: #555;
         padding: 10px;
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
+      }
+      button:disabled {
+        background: #444;
+        color: #333;
       }
       button:not(:disabled):hover {
         background: lime;
         color: black;
+      }
+      .host {
+        margin-bottom: 2vh;
+      }
+      .changing-colour {
+        animation: changing-colour 1s infinite alternate;
+        color: black;
+      }
+      #check-1,
+      #check {
+        margin-left: 1rem;
+        margin-right: 1rem;
       }
       #message {
         display: none;
@@ -47,6 +64,9 @@
       #checkbox-container label {
         display: block;
       }
+      #checkbox-container label:last-of-type {
+        margin-bottom: 20px;
+      }
       #checkbox-container label:hover {
         color: lime;
       }
@@ -55,7 +75,7 @@
       }
       #version-number-container,
       #version-number {
-        font-size: xx-small;
+        font-size: 0.75rem;
       }
       #custom-confirm {
         position: absolute;
@@ -64,10 +84,12 @@
         width: 100%;
         border-radius: 0;
         box-sizing: border-box;
-        transition: height 0.3s, padding 0.3s;
+        transition: height 0.2s, padding 0.2s;
         overflow: hidden;
         height: 0%;
         padding: 0;
+        display: flex;
+        flex-direction: column;
       }
       #custom-confirm,
       #custom-confirm p {
@@ -89,13 +111,25 @@
           min-height: var(--minHeight);
         }
       }
+      @media (pointer: none), (pointer: coarse) {
+        /* if mobile: */
+        label,
+        button {
+          font-size: 5vh;
+        }
+
+        .host {
+          width: 2rem;
+          height: 2rem;
+        }
+      }
     </style>
   </head>
   <body>
     <main>
       <p id="message"></p>
       <button id="check-1">Check domain <span id="domain"></span></button>
-      <button id="check">Check scripts</button>
+      <button id="check">Check more scripts</button>
       <div id="checkbox-container"></div>
       <div id="version-number-container" role="button">
         You're using version
