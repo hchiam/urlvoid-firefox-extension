@@ -1,5 +1,10 @@
 {
   "manifest_version": 3,
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{c64b7090-a19c-41f5-a624-490cd627ce06}"
+    }
+  },
   "name": "Check All Scripts with URLVoid",
   "description": "Check all scripts. With 3 clicks. (Disclaimer: Not an official URLVoid tool. Experimental. Recommended to be used with NoScript.)",
   "version": "3.0.0",

@@ -10,6 +10,8 @@ Check all scripts. With 3 clicks.
 
 **Disclaimer:** This is _not_ an official URLVoid tool. Just an experimental tool that creates and opens links. Recommended to be used in combination with the add-on [NoScript](https://addons.mozilla.org/en-US/firefox/addon/noscript/).
 
+**2023 Update:** Version 3.0.0 uses manifest MV3, which requires at least Firefox 109.0 (January 17, 2023).
+
 ## Development
 
 Firefox: <about:debugging#/runtime/this-firefox>
